@@ -1,0 +1,27 @@
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+
+
+<html>
+
+<head>
+	<title>应用程序</title>
+  <!--设置dojoConfig-->
+
+	<!--导入DOJO-->
+	<script src="//yandex.st/dojo/1.9.1/dojo/dojo.js" data-dojo-config="async: true, paths: {'app': '/../app'}"></script>
+	<link rel="stylesheet" type="text/css" href="//yandex.st/dojo/1.9.1/dijit/themes/claro/claro.css">
+	<!--正式代码-->
+  <script>
+    require(["app/App"],function(App){
+        var app = new App();
+        app.startup();
+    });
+ 
+  </script>
+</head>
+
+<body class="claro">
+	<div id="app"></div>
+</body>
+
+</html>
