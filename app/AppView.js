@@ -36,13 +36,13 @@ define(["dojo/_base/declare","dojo/dom","dijit/layout/BorderContainer","dijit/la
     	appLayout.addChild(menuContener);
 
         var menuTree = new MenuTree();
-        menuTree.init();
+        var myTree = menuTree.init();
 
     	//创建导航栏位置，并且加入到BorderContenr
     	console.log("初始化导航");
     	var naviContener = new ContentPane({
     		region:"left",
-    		content:"这里以后是导航栏"
+    		content: myTree
     	});
     	appLayout.addChild(naviContener);
 
