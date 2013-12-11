@@ -1,5 +1,5 @@
-define(["dojo/_base/declare","dojo/dom","dijit/layout/BorderContainer","dijit/layout/TabContainer","dijit/layout/ContentPane","dojo/domReady!"], 
-	function(declare,dom,BorderContainer,TabContainer,ContentPane){
+define(["dojo/_base/declare","dojo/dom","dijit/layout/BorderContainer","dijit/layout/TabContainer","dijit/layout/ContentPane","app/MenuTree","dojo/domReady!"], 
+	function(declare,dom,BorderContainer,TabContainer,ContentPane,MenuTree){
   return declare(null, {
     constructor: function(){
     	
@@ -34,6 +34,9 @@ define(["dojo/_base/declare","dojo/dom","dijit/layout/BorderContainer","dijit/la
     		content:"这里以后是菜单栏"
     	});
     	appLayout.addChild(menuContener);
+
+        var menuTree = new MenuTree();
+        menuTree.init();
 
     	//创建导航栏位置，并且加入到BorderContenr
     	console.log("初始化导航");
