@@ -1,5 +1,5 @@
-define(["dojo/_base/declare","dojo/dom","dijit/layout/BorderContainer","dijit/layout/TabContainer","dijit/layout/ContentPane","app/MenuTree","dojo/domReady!"], 
-	function(declare,dom,BorderContainer,TabContainer,ContentPane,MenuTree){
+define(["dojo/_base/declare","dojo/dom","dijit/layout/BorderContainer","dijit/layout/TabContainer","dijit/layout/ContentPane","app/MenuTree","app/MenuBar","dojo/domReady!"], 
+	function(declare,dom,BorderContainer,TabContainer,ContentPane,MenuTree,MenuBar){
   return declare(null, {
     constructor: function(){
     	
@@ -26,15 +26,21 @@ define(["dojo/_base/declare","dojo/dom","dijit/layout/BorderContainer","dijit/la
     	});
     	appLayout.addChild(contentTabs);
 
+        //新建目录
+        console.log("初始化目录树对象");
+        var menuBar = new MenuBar();
+        var myMenu = menuBar.init();
+
     	//创建菜单栏位置，并且加入到BorderContener中
     	console.log("初始化菜单栏");
     	var menuContener = new ContentPane({
     		region:"top",
-    		style:"background-color: #FFFFFF",
-    		content:"这里以后是菜单栏"
+    		content:myMenu
     	});
     	appLayout.addChild(menuContener);
 
+        //新建目录树
+        console.log("新建目录树对象");
         var menuTree = new MenuTree();
         var myTree = menuTree.init();
 
@@ -45,6 +51,7 @@ define(["dojo/_base/declare","dojo/dom","dijit/layout/BorderContainer","dijit/la
     		content: myTree
     	});
     	appLayout.addChild(naviContener);
+
 
     	//创建初始程序界面
     	console.log("读取初始应用，以后是登陆界面");
