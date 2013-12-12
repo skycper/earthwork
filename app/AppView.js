@@ -16,11 +16,23 @@ define(["dojo/_base/declare","dojo/dom","dijit/layout/BorderContainer","dijit/la
     		design:"headline"
     	});
     	
-
-        appLayout.addChild(new ContentPane({
+        var appLayout2 = new BorderContainer({
             region:"center",
-            content:"2"
+            style: "height: 100%; width: 100%"
+        });
+
+        appLayout2.addChild(new ContentPane({
+            region:"left",
+            content:"左边"
         }));
+
+        appLayout2.addChild(new ContentPane({
+            region:"right",
+            content:"右边"
+        }));
+
+        appLayout.addChild(appLayout2);
+
 
         //新建目录
         console.log("初始化目录树对象");
