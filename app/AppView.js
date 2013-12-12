@@ -29,13 +29,13 @@ define(["dojo/_base/declare","dojo/dom","dijit/layout/BorderContainer","dijit/la
         //新建目录
         console.log("初始化目录树对象");
         var menuBar = new MenuBar();
-        var myMenu = menuBar.init();
+        myMenu = menuBar.init();
 
     	//创建菜单栏位置，并且加入到BorderContener中
     	console.log("初始化菜单栏");
     	var menuContener = new ContentPane({
     		region:"top",
-    		content:myMenu
+    		content: myMenu
     	});
     	appLayout.addChild(menuContener);
 
@@ -43,6 +43,17 @@ define(["dojo/_base/declare","dojo/dom","dijit/layout/BorderContainer","dijit/la
         console.log("新建目录树对象");
         var menuTree = new MenuTree();
         var myTree = menuTree.init();
+
+        myTree.on("click", function(){
+            var selectedItem = this.get("selectedItem");
+            console.log(selectedItem);
+            if(selectedItem){
+                contentTabs.addChild(new ContentPane({
+                    title: selectedItem.name,
+                    focused: true
+                }));
+            }
+        });
 
     	//创建导航栏位置，并且加入到BorderContenr
     	console.log("初始化导航");

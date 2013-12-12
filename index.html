@@ -6,9 +6,11 @@
 <head>
 	<title>应用程序</title>
   <!--设置dojoConfig-->
-
+  <script type="text/javascript">
+    dojoConfig = {async: true, paths: {'app': '/../app'}, isDebug:true};
+  </script>
 	<!--导入DOJO-->
-	<script src="//yandex.st/dojo/1.9.1/dojo/dojo.js" data-dojo-config="async: true, paths: {'app': '/../app'}"></script>
+	<script src="//yandex.st/dojo/1.9.1/dojo/dojo.js"></script>
 	<link rel="stylesheet" type="text/css" href="//yandex.st/dojo/1.9.1/dijit/themes/claro/claro.css">
 	<!--正式代码-->
   <script>

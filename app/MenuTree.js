@@ -31,8 +31,6 @@ define(["dojo/_base/declare","dojo/store/Memory","dijit/tree/ObjectStoreModel","
         	model: myMenuModel
     	});
 
-         console.log(tree);
-
         return tree;
          // this.tree = tree;
     }
