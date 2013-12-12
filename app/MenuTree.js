@@ -1,8 +1,8 @@
-define(["dojo/_base/declare","dojo/store/Memory","dijit/tree/ObjectStoreModel","dijit/tree"], 
-	function(declare,Memory,ObjectStoreModel,tree){
-  return declare(null, {
+define(["dojo/_base/declare","dojo/store/Memory","dijit/tree/ObjectStoreModel","dijit/Tree"], 
+	function(declare,Memory,ObjectStoreModel,Tree){
+    return declare(null, {
     constructor: function(){
-        var tree = new Tree();;
+        // var tree = new Tree(null);
     },
 
     //程序树初始化
@@ -21,17 +21,20 @@ define(["dojo/_base/declare","dojo/store/Memory","dijit/tree/ObjectStoreModel","
 
     	//创建树模型
     	var myMenuModel = new ObjectStoreModel({
-        	store: myStore,
+        	store: myMenu,
         	query: {id: 'programe'}
     		});
+
     	
     	//创建树
     	 var tree = new Tree({
-        	model: myMenuModel;
+        	model: myMenuModel
     	});
 
-         this.tree = tree;
+         console.log(tree);
 
+        return tree;
+         // this.tree = tree;
     }
   });
 });

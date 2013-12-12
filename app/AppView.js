@@ -1,5 +1,5 @@
-define(["dojo/_base/declare","dojo/dom","dijit/layout/BorderContainer","dijit/layout/TabContainer","dijit/layout/ContentPane","app/MenuTree","dojo/domReady!"], 
-	function(declare,dom,BorderContainer,TabContainer,ContentPane,MenuTree){
+define(["dojo/_base/declare","dojo/dom","dijit/layout/BorderContainer","dijit/layout/TabContainer","dijit/layout/ContentPane","app/MenuTree","app/MenuBar","dojo/domReady!"], 
+	function(declare,dom,BorderContainer,TabContainer,ContentPane,MenuTree,MenuBar){
   return declare(null, {
     constructor: function(){
     	
@@ -17,42 +17,37 @@ define(["dojo/_base/declare","dojo/dom","dijit/layout/BorderContainer","dijit/la
     	});
     	
 
-    	//创建TabContainer并且加入到BorderContainer中
-    	console.log("初始化页签容器");
-    	var contentTabs = new TabContainer({
-    		region:"center",
-    		id:"contentTabs",
-    		tabPosition:"top",
-    	});
-    	appLayout.addChild(contentTabs);
+        appLayout.addChild(new ContentPane({
+            region:"center",
+            content:"2"
+        }));
+
+        //新建目录
+        console.log("初始化目录树对象");
+        var menuBar = new MenuBar();
+        var myMenu = menuBar.init();
 
     	//创建菜单栏位置，并且加入到BorderContener中
     	console.log("初始化菜单栏");
     	var menuContener = new ContentPane({
     		region:"top",
-    		style:"background-color: #FFFFFF",
-    		content:"这里以后是菜单栏"
+    		content:myMenu
     	});
     	appLayout.addChild(menuContener);
 
+        //新建目录树
+        console.log("新建目录树对象");
         var menuTree = new MenuTree();
-        menuTree.init();
+        var myTree = menuTree.init();
 
     	//创建导航栏位置，并且加入到BorderContenr
     	console.log("初始化导航");
     	var naviContener = new ContentPane({
     		region:"left",
-    		content:"这里以后是导航栏"
+    		content: myTree
     	});
     	appLayout.addChild(naviContener);
 
-    	//创建初始程序界面
-    	console.log("读取初始应用，以后是登陆界面");
-    	contentTabs.addChild(
-    		new ContentPane({
-    			herf:"http://www.baidu.cn",
-    			title:"百度"
-    		}));
 
     	//启动界面
     	console.log("启动界面");
