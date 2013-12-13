@@ -1,5 +1,5 @@
-define(["dojo/_base/declare","dojo/dom","dijit/layout/BorderContainer","dijit/layout/TabContainer","dijit/layout/ContentPane","app/MenuTree","app/MenuBar","dojo/domReady!"], 
-	function(declare,dom,BorderContainer,TabContainer,ContentPane,MenuTree,MenuBar){
+define(["dojo/_base/declare","dojo/dom","dijit/layout/BorderContainer","dijit/layout/TabContainer","dijit/layout/ContentPane","app/MenuTree","app/MenuBar","app/CorpApp","dojo/domReady!"], 
+	function(declare,dom,BorderContainer,TabContainer,ContentPane,MenuTree,MenuBar,CorpApp){
   return declare(null, {
     constructor: function(){
     	
@@ -15,23 +15,6 @@ define(["dojo/_base/declare","dojo/dom","dijit/layout/BorderContainer","dijit/la
     		style: "height: 100%; width: 100%",
     		design:"headline"
     	});
-    	
-        var appLayout2 = new BorderContainer({
-            region:"center",
-            style: "height: 100%; width: 100%"
-        });
-
-        appLayout2.addChild(new ContentPane({
-            region:"left",
-            content:"左边"
-        }));
-
-        appLayout2.addChild(new ContentPane({
-            region:"right",
-            content:"右边"
-        }));
-
-        appLayout.addChild(appLayout2);
 
 
         //新建目录
@@ -60,6 +43,9 @@ define(["dojo/_base/declare","dojo/dom","dijit/layout/BorderContainer","dijit/la
     	});
     	appLayout.addChild(naviContener);
 
+        //初始化程序并且显示
+        var corpApp = new CorpApp();
+        appLayout.addChild(CorpApp.startup())
 
     	//启动界面
     	console.log("启动界面");
