@@ -1,0 +1,29 @@
+
+<body class = "claro">
+    <div>
+        <label for="corpNum">公司编码：</label>
+        <input id="corpNum">
+    </div>
+    <div>
+        <label for="corpName">公司名称：</label>
+        <input id="corpName">
+    </div>
+
+
+     <script>
+        require(["dijit/form/ValidationTextBox","dojo/domReady!"]
+            function(ValidationTextBox){
+                var corpNum = ValidationTextBox({
+                    name:"corpNum",
+                    value:"这里显示公司编码"
+                },"corpNum");
+                console.log("显示公司编码");
+                corpNum.startup();
+
+                var corpName = ValidationTextBox({
+                    name:"corpName"
+                    value:"这里显示公司名称"
+                },"corpName");
+                corpName.startup();
+        });
+    </script>

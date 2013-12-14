@@ -1,5 +1,5 @@
-define(["dojo/_base/declare","dijit/layout/BorderContainer","dijit/layout/ContentPane","app/MenuTree","dijit/form/Button"], 
-    function(declare,BorderContainer,ContentPane,MenuTree,Button){
+define(["dojo/_base/declare","dijit/layout/BorderContainer","dijit/layout/ContentPane","app/MenuTree","dijit/form/ValidationTextBox"], 
+    function(declare,BorderContainer,ContentPane,MenuTree,ValidationTextBox){
   return declare(null, {
     constructor: function(){
     },
@@ -27,17 +27,9 @@ define(["dojo/_base/declare","dijit/layout/BorderContainer","dijit/layout/Conten
 
         var corpAppCenter = new ContentPane({
             region:"center",
-            content:"这里以后是修改表单<br/>"
+            href:"app/views/corpapp/corpAppView.html"
         });
         corpApp.addChild(corpAppCenter);
-
-        var testButton = new Button({
-            label:"点击BIRD",
-            onClick:function(){
-                console.log("木有事可8要乱点bird")
-            }
-        });
-        corpAppCenter.addChild(testButton);
 
         return corpApp;
 
