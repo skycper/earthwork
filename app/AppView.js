@@ -1,5 +1,5 @@
-define(["dojo/_base/declare","dojo/dom","dijit/layout/BorderContainer","dijit/layout/TabContainer","dijit/layout/ContentPane","app/MenuTree","app/MenuBar","dojo/domReady!"], 
-	function(declare,dom,BorderContainer,TabContainer,ContentPane,MenuTree,MenuBar){
+define(["dojo/_base/declare","dojo/dom","dijit/layout/BorderContainer","dijit/layout/TabContainer","dijit/layout/ContentPane","app/MenuTree","app/MenuBar","app/CorpApp","dojo/domReady!"], 
+	function(declare,dom,BorderContainer,TabContainer,ContentPane,MenuTree,MenuBar,CorpApp){
   return declare(null, {
     constructor: function(){
     	
@@ -50,6 +50,7 @@ define(["dojo/_base/declare","dojo/dom","dijit/layout/BorderContainer","dijit/la
             if(selectedItem){
                 contentTabs.addChild(new ContentPane({
                     title: selectedItem.name,
+
                     focused: true
                 }));
             }
@@ -63,6 +64,9 @@ define(["dojo/_base/declare","dojo/dom","dijit/layout/BorderContainer","dijit/la
     	});
     	appLayout.addChild(naviContener);
 
+        //新建应用
+        var corpApp = new CorpApp();
+        var corpAppLayout = new corpApp.startup();
 
     	//创建初始程序界面
     	console.log("读取初始应用，以后是登陆界面");
@@ -71,6 +75,8 @@ define(["dojo/_base/declare","dojo/dom","dijit/layout/BorderContainer","dijit/la
     			herf:"http://www.baidu.cn",
     			title:"百度"
     		}));
+
+        contentTabs.addChild(corpAppLayout);
 
     	//启动界面
     	console.log("启动界面");
